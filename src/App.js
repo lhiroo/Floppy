@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // pages
 import Home from "./pages/Home"

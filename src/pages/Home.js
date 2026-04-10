@@ -52,6 +52,10 @@ const Home = ({ token, setToken }) => {
     navigate('/login')
   }
 
+  const create = () => {
+    navigate('/create')
+  }
+
   return (
     <div className="page home">
       <h3>Hello {token ? token.user.user_metadata.full_name : ""}</h3>
@@ -71,6 +75,8 @@ const Home = ({ token, setToken }) => {
           </div>
         </div>
       )}
+      <br/>
+      <button className='floppy-btn' onClick={create}>Create New Floppy</button>
       <br/>
       <button className='logout-btn' onClick={logout}>Log Out</button>
       {logoutError && <p className="error">{logoutError}</p>}
