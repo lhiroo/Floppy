@@ -24,8 +24,8 @@ const App = () => {
       </nav>
       <Routes>
         <Route path="/" element={<Home token={token} setToken={setToken}/>} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/login" element={<Login token={token} setToken={setToken} />} />
+        <Route path="/signUp" element={<SignUp token={token} />} />
         <Route path="/create" element={<Create token={token}/>} />
         <Route path="/:id" element={<Update />} />
       </Routes>

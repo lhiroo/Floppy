@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import supabase from "../config/config";
 
-const SignUp = () => {
+const SignUp = ({ token }) => {
     const navigate = useNavigate()
 
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [formError, setFormError] = useState(null)
+
+    useEffect(() => {
+        if (token) {
+          navigate("/");
+        }
+      }, [token, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -72,7 +78,7 @@ const SignUp = () => {
                 <button>Sign up now</button>
                 {formError && <p className="error">{formError}</p>}
                 <br/>
-                <Link to='/login'>Login</Link>
+                <p>Already have an account ? <Link to='/login'>Login</Link></p>
             </form>
         </div>
     )

@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import supabase from "../config/config";
 
-const Login = ({ setToken }) => {
+const Login = ({ token, setToken }) => {
     const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [formError, setFormError] = useState(null)
+
+    useEffect(() => {
+        if (token) {
+          navigate("/");
+        }
+      }, [token, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -67,7 +73,7 @@ const Login = ({ setToken }) => {
                 <button>Login now</button>
                 {formError && <p className="error">{formError}</p>}
                 <br/>
-                <Link to='/signUp'>Sign up</Link>
+                <p>Haven't created an account yet ? <Link to='/signUp'>Sign up</Link></p>
             </form>
         </div>
     )
